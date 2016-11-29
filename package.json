@@ -5,9 +5,8 @@
   "main": "build/index.js",
   "scripts": {
     "test": "tsc && mocha build/test",
-    "postinstall": "npm run build",
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "npm run build; node build/index.js",
     "dev-server": "nodemon -w src -x ts-node src/index.ts",
     "lint": "tslint src/**/*.ts"
   },

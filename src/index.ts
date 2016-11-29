@@ -1,13 +1,7 @@
-import * as Koa from 'koa';
+import { App } from './App';
 
-import router from './routes';
-
-const app = new Koa();
 const port = process.env.PORT || 8080;
-
-app
-  .use(router.routes())
-  .use(router.allowedMethods());
+const app = new App();
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
