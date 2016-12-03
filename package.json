@@ -15,16 +15,20 @@
   "license": "ISC",
   "dependencies": {
     "@types/koa": "^2.0.34",
+    "@types/koa-bodyparser": "^3.0.20",
     "@types/koa-router": "^7.0.21",
     "@types/node": "^6.0.48",
     "koa": "^2.0.0",
-    "koa-router": "^7.0.1"
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "^7.0.1",
+    "routing-controllers": "^0.6.6"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
     "ts-node": "^1.7.0",
     "tslint": "^3.15.1",
-    "typescript": "^2.0.10"
+    "typescript": "^2.0.10",
+    "typings": "^2.0.0"
   },
   "repository": {
     "url": "",

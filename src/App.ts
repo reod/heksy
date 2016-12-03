@@ -1,33 +1,17 @@
-import * as Koa from 'koa';
-import * as Router from 'koa-router';
+import 'reflect-metadata';
+import { createKoaServer } from 'routing-controllers';
 
-import { executionTimeLogger } from './middlewares';
-import { PageController } from './PageController';
+import './UserController';
+import './ApiController';
 
 export class App {
-  public koa: Koa;
+  public server: any;
 
   constructor() {
-    this.koa = new Koa();
-    this.registerMiddlewares();
-    this.registerRoutes();
+    this.server = createKoaServer();
   }
 
-  private registerMiddlewares(): void {
-    this.koa.use(executionTimeLogger);
-  }
-
-  private registerRoutes(): void {
-    const router = new Router();
-    const pageController = new PageController('default');
-
-    router.get('/', pageController.index);
-
-    this.koa.use(router.routes());
-    this.koa.use(router.allowedMethods());
-  }
-
-  public listen(port: Number, callback: Function) {
-    return this.koa.listen(port, callback);
+  public listen(port: Number, callback?: Function) {
+    return this.server.listen(port, callback);
   }
 }
