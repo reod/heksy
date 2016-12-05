@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 import { createKoaServer } from 'routing-controllers';
 
-import './UserController';
-import './ApiController';
+import './controllers/ApiController';
+import './controllers/NoteController';
 
 export class App {
   public server: any;

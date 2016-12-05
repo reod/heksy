@@ -5,12 +5,13 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "outDir": "build",
-    "rootDir": "./src",
+    "rootDir": ".",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
   "compileOnSave": false,
   "include": [
+    "./lib/**/*.ts",
     "./src/**/*.ts"
   ],
   "exclude": [
