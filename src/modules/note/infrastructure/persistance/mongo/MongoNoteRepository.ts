@@ -24,13 +24,13 @@ export class MongoNoteRepository implements NoteRepository {
 
   async getAll(): Promise<Array<Note>> {
     const notes = await NoteModel.find({});
+    // TODO: why I need to do that?
     const parsedNotes = notes.map(this.parseNote);
-
-    // TODO: why I need to?
+    
     return parsedNotes;
   }
 
-  parseNote(note: any): INote {
+  parseNote(note: any): Note {
     return {
       id: String(note._id),
       type: note.type,

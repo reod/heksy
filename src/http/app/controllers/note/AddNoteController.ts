@@ -15,8 +15,7 @@ export class AddNoteController extends ApiController implements Responder {
   @Post('/notes')
   async addNote(@Body() note: Note) {
     const addNoteUseCase = this.getAddNotestNotesUseCase();
-    const addNoteCommand = new Command();
-    addNoteCommand.setNote(note);
+    const addNoteCommand = new Command(note);
     await addNoteUseCase.execute(addNoteCommand, this);
 
     return this.note;
