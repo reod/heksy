@@ -3,3 +3,4 @@ ts-node
 .env
 build
 *.log
+.vscode

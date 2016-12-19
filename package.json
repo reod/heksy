@@ -17,10 +17,12 @@
     "@types/koa": "^2.0.34",
     "@types/koa-bodyparser": "^3.0.20",
     "@types/koa-router": "^7.0.21",
+    "@types/mongoose": "^4.7.1",
     "@types/node": "^6.0.48",
     "koa": "^2.0.0",
     "koa-bodyparser": "^3.2.0",
     "koa-router": "^7.0.1",
+    "mongoose": "^4.7.2",
     "routing-controllers": "^0.6.6"
   },
   "devDependencies": {

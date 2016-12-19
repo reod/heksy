@@ -1,0 +1,19 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/louy/typed-mongoose/d31d5e6880fb7291290563294237e092b6e09db2/typings.json",
+    "raw": "registry:npm/mongoose#4.3.5+20160628072220",
+    "main": "index.d.ts",
+    "version": "4.3.5",
+    "dependencies": {
+      "mpromise": {
+        "src": "https://raw.githubusercontent.com/typed-typings/npm-mpromise/a3585faef66f665f3af6ad4e773bbdd35b50a6a9/typings.json",
+        "raw": "registry:npm/mpromise#0.5.5+20160524161901",
+        "main": "index.d.ts",
+        "version": "0.5.5",
+        "name": "mpromise"
+      }
+    },
+    "name": "mongoose"
+  }
+}

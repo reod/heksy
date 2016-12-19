@@ -14,18 +14,14 @@ export class UseCase {
     this.noteRepository = noteReository;
   }
 
-  execute(command: Command, responder: Responder): void {
-    let note: Note = null;
-
+  async execute(command: Command, responder: Responder) {
     try {
-      note = NoteFactory.create(command.getNote());
-      this.noteRepository.add(note);
+      const note = NoteFactory.create(command.getNote());
+      await this.noteRepository.add(note);
+      responder.noteAddedSuccessfully(note);
     } catch (e) {
-      console.log(e)
       responder.noteNotAdded(e.getErrors());
     }
-    
-    responder.noteAddedSuccessfully(note);
   }
 
 }

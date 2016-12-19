@@ -1,4 +1,3 @@
-import { Note } from './../../../modules/note/domain/Note';
 import { NoteRepository } from './../../../modules/note/domain/NoteRepository';
 import { Command } from './Command';
 import { Responder } from './Responder';
@@ -12,8 +11,8 @@ export class UseCase {
     this.noteRepository = noteReository;
   }
 
-  execute(command: Command, responder: Responder): void {
-    const notes = this.noteRepository.getAll();
+  async execute(command: Command, responder: Responder) {
+    const notes = await this.noteRepository.getAll();
     responder.notesFound(notes);
   }
 

@@ -1,6 +1,12 @@
-export class Note {
+export interface INote {
+  id?: string;
+  type: string;
+  content: string;
+}
 
-  public id: number;
+export class Note implements INote {
+
+  public id?: string;
   public type: string;
   public content: string;
 

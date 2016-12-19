@@ -9,17 +9,18 @@ import { Responder } from './../../../../application/use-cases/list-notes/Respon
 @JsonController()
 export class ListNotesController extends ApiController implements Responder {
 
-  private notes: Array<Note>;
+  private notes: Array<Note> = [];
 
   @Get('/notes')
-  getAll() {
+  async getAll() {
     const listNotesUseCase = this.getListNotesUseCase();
-    listNotesUseCase.execute(new Command(), this);
+    await listNotesUseCase.execute(new Command(), this);
 
     return this.notes;
   }
 
   notesFound(notes: Array<Note>) {
+    
     this.notes = notes;
   }
 

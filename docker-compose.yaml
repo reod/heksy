@@ -8,3 +8,7 @@ services:
       - .:/usr/src/app
     environment:
       NODE_ENV: development
+    links:
+      - mongo
+  mongo:
+    image: mongo:3.2.11

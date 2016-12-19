@@ -1,6 +1,8 @@
 {
   "name": "",
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "registry:npm/mongoose#4.3.5+20160628072220"
+  },
   "globalDependencies": {
     "koa": "registry:dt/koa#2.0.0+20161025101853",
     "koa-router": "registry:dt/koa-router#7.0.0+20160314083221",

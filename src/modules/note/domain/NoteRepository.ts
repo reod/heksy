@@ -1,7 +1,7 @@
-import { Note } from './Note';
+import { INote } from './Note';
 
 export interface NoteRepository {
-  add(note: Note): number;
-  findById(id: number): Note;
-  getAll(): Array<Note>;
+  add(note: INote): Promise<INote>;
+  findById(id: string): Promise<INote>;
+  getAll(): Promise<Array<INote>>;
 }

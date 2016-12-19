@@ -1,21 +1,23 @@
 interface Idwise {
-  id: number;
+  id?: any;
 }
 
 export class InMemoryRepository<T extends Idwise> {
 
   private repo: Array<T> = [];
   
-  add(item: T): number {
-    return this.repo.push(item);
+  async add(item: T): Promise<T> {
+    this.repo.push(item);
+    return Promise.resolve(item);
   }
 
-  findById(id: number): T {
-    return this.repo.find(item => item.id === id);
+  async findById(id: string): Promise<T> {
+    const item: T = this.repo.find(item => item.id === id);
+    return Promise.resolve(item);
   }
 
-  getAll(): Array<T> {
-    return this.repo;
+  async getAll(): Promise<Array<T>> {
+    return Promise.resolve(this.repo);
   }
 }
 

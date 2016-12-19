@@ -1,5 +1,5 @@
-import { Note } from './../../../modules/note/domain/Note';
+import { INote } from './../../../modules/note/domain/Note';
 
 export interface Responder {
-  notesFound(notes: Array<Note>): void;
+  notesFound(notes: Array<INote>): void;
 }

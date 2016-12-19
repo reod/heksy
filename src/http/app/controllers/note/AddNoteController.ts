@@ -13,11 +13,11 @@ export class AddNoteController extends ApiController implements Responder {
   private note: Note;
 
   @Post('/notes')
-  addNote(@Body() note: Note) {
+  async addNote(@Body() note: Note) {
     const addNoteUseCase = this.getAddNotestNotesUseCase();
     const addNoteCommand = new Command();
     addNoteCommand.setNote(note);
-    addNoteUseCase.execute(addNoteCommand, this);
+    await addNoteUseCase.execute(addNoteCommand, this);
 
     return this.note;
   }
