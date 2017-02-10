@@ -7,8 +7,11 @@ export class InMemoryRepository<T extends Idwise> {
   private repo: Array<T> = [];
   
   async add(item: T): Promise<T> {
-    this.repo.push(item);
-    return Promise.resolve(item);
+    const id = String(+new Date());
+    const itemWithId = Object.assign({}, item, { id });
+    this.repo.push(itemWithId);
+    
+    return Promise.resolve(itemWithId);
   }
 
   async findById(id: string): Promise<T> {
@@ -19,6 +22,27 @@ export class InMemoryRepository<T extends Idwise> {
   async getAll(): Promise<Array<T>> {
     return Promise.resolve(this.repo);
   }
+
+  async delete(id: string): Promise<Boolean> {
+    let index = -1;
+    const { length } = this.repo;
+    
+    for (let i = 0; i < length; i++) {
+      if (this.repo[i].id === id) {
+        index = i;
+        break; 
+      }
+    }
+
+    if (index === -1) {
+      throw new Error(`Note with ${id} not found!`);
+    }
+
+    this.repo = [
+      ...this.repo.slice(0, index),
+      ...this.repo.slice(index + 1)
+    ];
+
+    return Promise.resolve(true);
+  }
 }
-
-

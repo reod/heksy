@@ -36,4 +36,3 @@ export class AddNoteController extends ApiController implements Responder {
     return this.getUseCase('addNote');
   }
 }
-

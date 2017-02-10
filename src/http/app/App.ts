@@ -4,6 +4,7 @@ import { createKoaServer } from 'routing-controllers';
 import './controllers/ApiController';
 import './controllers/note/ListNotesController';
 import './controllers/note/AddNoteController';
+import './controllers/note/DeleteNoteController';
 
 
 export class App {

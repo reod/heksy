@@ -20,7 +20,6 @@ export class ListNotesController extends ApiController implements Responder {
   }
 
   notesFound(notes: Array<Note>) {
-    
     this.notes = notes;
   }
 

@@ -30,6 +30,10 @@ export class MongoNoteRepository implements NoteRepository {
     return parsedNotes;
   }
 
+  async delete(id: string): Promise<Boolean> {
+    return Promise.resolve(true);
+  }
+
   parseNote(note: any): Note {
     return {
       id: String(note._id),

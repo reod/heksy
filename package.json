@@ -23,7 +23,8 @@
     "koa-bodyparser": "^3.2.0",
     "koa-router": "^7.0.1",
     "mongoose": "^4.7.2",
-    "routing-controllers": "^0.6.6"
+    "routing-controllers": "^0.6.6",
+    "typescript": "^2.1.6"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",

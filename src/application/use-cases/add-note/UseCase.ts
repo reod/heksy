@@ -17,8 +17,8 @@ export class UseCase {
   async execute(command: Command, responder: Responder) {
     try {
       const note = NoteFactory.create(command.getNote());
-      await this.noteRepository.add(note);
-      responder.noteAddedSuccessfully(note);
+      const addedNote = await this.noteRepository.add(note);
+      responder.noteAddedSuccessfully(addedNote);
     } catch (e) {
       responder.noteNotAdded(e.getErrors());
     }
