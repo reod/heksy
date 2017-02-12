@@ -35,9 +35,9 @@ export class MongoNoteRepository implements NoteRepository {
     return !!s;
   }
 
-  async edit(data: any): Promise<Note> {
+  async edit(note: Note): Promise<Note> {
     // TODO
-    const { id } = data;
+    const { id } = note;
     return Promise.resolve(null);
   }
 

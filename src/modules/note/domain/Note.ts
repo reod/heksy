@@ -10,7 +10,8 @@ export class Note implements INote {
   public type: string;
   public content: string;
 
-  constructor(type: string, content: string) {
+  constructor(id: string, type: string, content: string) {
+    this.id = id;
     this.type = type;
     this.content = content;
   }

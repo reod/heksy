@@ -35,7 +35,7 @@ export class InMemoryRepository<T extends Idwise> {
     }
 
     if (index === -1) {
-      throw new Error(`Note with ${id} not found!`);
+      throw new Error(`Item with ${id} not found!`);
     }
 
     this.repo = [
@@ -46,10 +46,12 @@ export class InMemoryRepository<T extends Idwise> {
     return Promise.resolve(true);
   }
 
-  async edit(data: any): Promise<T> {
-    const { id } = data;
+  async edit(item: T): Promise<T> {
+    const { id } = item;
     const { length } = this.repo;
     let index = -1;
+
+    console.log(id, item);
     
     for (let i = 0; i < length; i++) {
       if (this.repo[i].id === id) {
@@ -58,18 +60,19 @@ export class InMemoryRepository<T extends Idwise> {
       }
     }
 
+
     if (index === -1) {
-      throw new Error(`Note with ${id} not found!`);
+      throw new Error(`Item with ${id} not found!`);
     }
 
-    const editedNote = Object.assign({}, this.repo[index], data);
-    
+    const editedItem = Object.assign({}, this.repo[index], item);
+
     this.repo = [
       ...this.repo.slice(0, index),
-      editedNote,
+      editedItem,
       ...this.repo.slice(index + 1)
     ];
 
-    return Promise.resolve(editedNote);
+    return Promise.resolve(editedItem);
   }
 }

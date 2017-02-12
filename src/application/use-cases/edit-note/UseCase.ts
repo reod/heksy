@@ -1,3 +1,4 @@
+import { NoteFactory } from './../../../modules/note/domain/NoteFactory';
 import { NoteRepository } from './../../../modules/note/domain/NoteRepository';
 import { Command } from './Command';
 import { Responder } from './Responder';
@@ -15,10 +16,11 @@ export class UseCase {
     const data = command.getData();
 
     try {
-      const note = await this.noteRepository.edit(data);
+      const note = NoteFactory.create(data);
+      await this.noteRepository.edit(note);
       responder.noteEdited(note);
     } catch (e) {
-      responder.noteNotEdited(e);
+      responder.noteNotEdited(e.getErrors());
     }
   }
 

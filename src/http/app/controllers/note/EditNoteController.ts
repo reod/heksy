@@ -2,6 +2,7 @@ import { JsonController, Patch, Body, Param } from 'routing-controllers';
 import { ApiController } from './../ApiController';
 
 import { Note } from './../../../../modules/note/domain/Note';
+import { ValidationError } from './../../../../shared-domain/ValidationError';
 
 import { UseCase } from './../../../../application/use-cases/edit-note/UseCase';
 import { Command } from './../../../../application/use-cases/edit-note/Command';
@@ -15,10 +16,10 @@ export class EditNoteController extends ApiController implements Responder {
 
   @Patch('/notes/:id')
   async deleteNote(@Param('id') id: string, @Body() data: any) {
-    const params = Object.assign({}, data, { id });
-    const addNoteUseCase = this.getEditNoteUseCase();
-    const deleteNoteCommand = new Command(params);
-    await addNoteUseCase.execute(deleteNoteCommand, this);
+    const note = Object.assign({}, data, { id });
+    const editNoteUseCase = this.getEditNoteUseCase();
+    const editNoteCommand = new Command(note);
+    await editNoteUseCase.execute(editNoteCommand, this);
 
     return this.note;
   }
@@ -27,8 +28,11 @@ export class EditNoteController extends ApiController implements Responder {
     this.note = note;
   }
 
-  async noteNotEdited(error: Error) {
-    throw error;
+  async noteNotEdited(errors: Array<ValidationError>) {
+    const e = <any> new Error('ValidationError');
+    e.errors = errors;
+
+    throw e;
   }
 
   private getEditNoteUseCase(): UseCase {
