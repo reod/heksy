@@ -27,4 +27,3 @@ export class ListNotesController extends ApiController implements Responder {
     return this.getUseCase('listNotes');
   }
 }
-

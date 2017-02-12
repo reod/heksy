@@ -45,4 +45,31 @@ export class InMemoryRepository<T extends Idwise> {
 
     return Promise.resolve(true);
   }
+
+  async edit(data: any): Promise<T> {
+    const { id } = data;
+    const { length } = this.repo;
+    let index = -1;
+    
+    for (let i = 0; i < length; i++) {
+      if (this.repo[i].id === id) {
+        index = i;
+        break; 
+      }
+    }
+
+    if (index === -1) {
+      throw new Error(`Note with ${id} not found!`);
+    }
+
+    const editedNote = Object.assign({}, this.repo[index], data);
+    
+    this.repo = [
+      ...this.repo.slice(0, index),
+      editedNote,
+      ...this.repo.slice(index + 1)
+    ];
+
+    return Promise.resolve(editedNote);
+  }
 }

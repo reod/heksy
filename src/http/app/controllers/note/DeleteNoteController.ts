@@ -13,7 +13,7 @@ export class DeleteNoteController extends ApiController implements Responder {
 
   @Delete('/notes/:id')
   async deleteNote(@Param('id') id: string) {
-    const addNoteUseCase = this.getDeleteNotesUseCase();
+    const addNoteUseCase = this.getDeleteNoteUseCase();
     const deleteNoteCommand = new Command(id);
     await addNoteUseCase.execute(deleteNoteCommand, this);
 
@@ -28,7 +28,7 @@ export class DeleteNoteController extends ApiController implements Responder {
     throw error;
   }
 
-  private getDeleteNotesUseCase(): UseCase {
+  private getDeleteNoteUseCase(): UseCase {
     return this.getUseCase('deleteNote');
   }
 }

@@ -5,6 +5,7 @@ import { MongoNoteRepository } from './../../../modules/note/infrastructure/pers
 import { UseCase as ListNoteUseCase } from './../../../application/use-cases/list-notes/UseCase';
 import { UseCase as AddNoteUseCase } from './../../../application/use-cases/add-note/UseCase';
 import { UseCase as DeleteNoteUseCase } from './../../../application/use-cases/delete-note/UseCase';
+import { UseCase as EditNoteUseCase } from './../../../application/use-cases/edit-note/UseCase';
 
 @JsonController()
 export class ApiController {
@@ -19,6 +20,7 @@ export class ApiController {
     this.useCases.set('listNotes', new ListNoteUseCase(repo));
     this.useCases.set('addNote', new AddNoteUseCase(repo));
     this.useCases.set('deleteNote', new DeleteNoteUseCase(repo));
+    this.useCases.set('editeNote', new EditNoteUseCase(repo));
   }
 
   getUseCase(name: string): any {

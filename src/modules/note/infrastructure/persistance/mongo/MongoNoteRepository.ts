@@ -31,7 +31,14 @@ export class MongoNoteRepository implements NoteRepository {
   }
 
   async delete(id: string): Promise<Boolean> {
-    return Promise.resolve(true);
+    const s = await NoteModel.findOneAndRemove({ id });
+    return !!s;
+  }
+
+  async edit(data: any): Promise<Note> {
+    // TODO
+    const { id } = data;
+    return Promise.resolve(null);
   }
 
   parseNote(note: any): Note {
