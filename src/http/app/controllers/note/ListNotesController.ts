@@ -23,6 +23,10 @@ export class ListNotesController extends ApiController implements Responder {
     this.notes = notes;
   }
 
+  notesNotFound() {
+    throw new Error('Not found.');
+  }
+
   private getListNotesUseCase(): UseCase {
     return this.getUseCase('listNotes');
   }
