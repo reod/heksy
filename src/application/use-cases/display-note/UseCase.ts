@@ -12,11 +12,13 @@ export class UseCase {
   }
 
   async execute(command: Command, responder: Responder) {
+    const id = command.getId();
+
     try {
-      const notes = await this.noteRepository.getAll();
-      responder.notesFound(notes);
+      const note = await this.noteRepository.findById(id);
+      responder.noteFound(note);
     } catch (e) {
-      responder.notesNotFound();
+      responder.noteNotFound();
     }
   }
 

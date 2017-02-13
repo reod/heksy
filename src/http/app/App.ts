@@ -6,6 +6,7 @@ import './controllers/note/ListNotesController';
 import './controllers/note/AddNoteController';
 import './controllers/note/DeleteNoteController';
 import './controllers/note/EditNoteController';
+import './controllers/note/DisplayNoteController';
 
 
 export class App {

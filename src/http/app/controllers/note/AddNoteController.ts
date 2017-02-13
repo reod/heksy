@@ -1,6 +1,7 @@
 import { JsonController, Post, Body } from 'routing-controllers';
 import { ApiController } from './../ApiController';
 import { ValidationError } from './../../../../shared-domain/ValidationError';
+
 import { Note } from './../../../../modules/note/domain/Note';
 import { UseCase } from './../../../../application/use-cases/add-note/UseCase';
 import { Command } from './../../../../application/use-cases/add-note/Command';
@@ -35,4 +36,5 @@ export class AddNoteController extends ApiController implements Responder {
   private getAddNotestNotesUseCase(): UseCase {
     return this.getUseCase('addNote');
   }
+
 }

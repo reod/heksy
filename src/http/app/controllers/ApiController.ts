@@ -6,6 +6,8 @@ import { UseCase as ListNoteUseCase } from './../../../application/use-cases/lis
 import { UseCase as AddNoteUseCase } from './../../../application/use-cases/add-note/UseCase';
 import { UseCase as DeleteNoteUseCase } from './../../../application/use-cases/delete-note/UseCase';
 import { UseCase as EditNoteUseCase } from './../../../application/use-cases/edit-note/UseCase';
+import { UseCase as DisplayNoteUseCase } from './../../../application/use-cases/display-note/UseCase';
+
 
 @JsonController()
 export class ApiController {
@@ -21,6 +23,7 @@ export class ApiController {
     this.useCases.set('addNote', new AddNoteUseCase(repo));
     this.useCases.set('deleteNote', new DeleteNoteUseCase(repo));
     this.useCases.set('editeNote', new EditNoteUseCase(repo));
+    this.useCases.set('displayNote', new DisplayNoteUseCase(repo));
   }
 
   getUseCase(name: string): any {
