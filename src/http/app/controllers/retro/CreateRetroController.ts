@@ -16,7 +16,7 @@ export class CreateRetroController extends ApiController implements Responder {
   @Post('/retros')
   async addRetro(@Body() retro: Retro) {
     const createRetroUseCase = this.getCreateRetroUseCase();
-    const createRetroCommand = new Command(Retro);
+    const createRetroCommand = new Command(retro);
     await createRetroUseCase.execute(createRetroCommand, this);
 
     return this.retro;

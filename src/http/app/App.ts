@@ -9,6 +9,7 @@ import './controllers/note/EditNoteController';
 import './controllers/note/DisplayNoteController';
 
 import './controllers/retro/CreateRetroController';
+import './controllers/retro/DisplayRetroController';
 
 
 export class App {

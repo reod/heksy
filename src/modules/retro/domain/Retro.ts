@@ -1,3 +1,5 @@
+import { Note } from './../../../modules/note/domain/Note';
+
 export interface IRetro {
   id?: string;
 }
@@ -5,8 +7,10 @@ export interface IRetro {
 export class Retro implements IRetro {
 
   public id?: string;
+  private notes: Array<Note>;
 
-  constructor(id: string) {
+  constructor(id: string, notes: Array<Note>) {
     this.id = id;
+    this.notes = [];
   }
 }
