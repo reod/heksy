@@ -8,6 +8,8 @@ import './controllers/note/DeleteNoteController';
 import './controllers/note/EditNoteController';
 import './controllers/note/DisplayNoteController';
 
+import './controllers/retro/CreateRetroController';
+
 
 export class App {
   public server: any;
