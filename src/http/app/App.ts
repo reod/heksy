@@ -23,19 +23,4 @@ export class App {
     return this.server.listen(port, callback);
   }
 
-  public connectToMongo(): void {
-    let mongoose = require('mongoose');
-
-    const host: string = 'mongo';
-    const connectionUri = `mongodb://${host}`;
-    const connectionOptions = { promiseLibrary: global.Promise };
-
-    mongoose.Promise = global.Promise;
-    mongoose.connect(connectionUri, connectionOptions);
-    
-    mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-    mongoose.connection.once('open', () => {
-      console.log('connected to mongo db.');
-    });
-  }
 }
