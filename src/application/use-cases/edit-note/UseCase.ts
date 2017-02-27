@@ -18,8 +18,10 @@ export class UseCase {
     try {
       const note = NoteFactory.create(data);
       await this.noteRepository.edit(note);
+
       responder.noteEdited(note);
     } catch (e) {
+      console.log(e)
       responder.noteNotEdited(e.getErrors());
     }
   }

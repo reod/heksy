@@ -1,11 +1,11 @@
 export class Command {
-  private id: string;
+  private retroId: string;
 
-  constructor(id: string) {
-    this.id = id;
+  constructor(retroId: string) {
+    this.retroId = retroId;
   }
   
-  public getId(): string {
-    return this.id;
+  public getRetroId(): string {
+    return this.retroId;
   }
 }

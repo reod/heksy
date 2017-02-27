@@ -7,7 +7,7 @@ export class RetroFactory {
   public static create(data: any): Retro {
     const { id } = data;
     const retroValidator = new RetroValidator();
-    const retro = new Retro(id, []);
+    const retro = new Retro(id);
 
     if (!retroValidator.validate(retro)) {
       const errors = retroValidator.getErrors();

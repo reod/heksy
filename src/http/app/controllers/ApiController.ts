@@ -21,15 +21,16 @@ export class ApiController {
 
   constructor() {
     const noteRepo = ApiController.inMemoryNoteRepository;
+    const retroRepo = ApiController.inMemoryRetroRepository;
+
     this.useCases.set('listNotes', new ListNoteUseCase(noteRepo));
-    this.useCases.set('addNote', new AddNoteUseCase(noteRepo));
+    this.useCases.set('addNote', new AddNoteUseCase(noteRepo, retroRepo));
     this.useCases.set('deleteNote', new DeleteNoteUseCase(noteRepo));
     this.useCases.set('editeNote', new EditNoteUseCase(noteRepo));
     this.useCases.set('displayNote', new DisplayNoteUseCase(noteRepo));
 
-    const retroRepo = ApiController.inMemoryRetroRepository;
     this.useCases.set('createRetro', new CreateRetroUseCase(retroRepo));
-    this.useCases.set('displayRetro', new DisplayRetroUseCase(retroRepo));
+    this.useCases.set('displayRetro', new DisplayRetroUseCase(retroRepo, noteRepo));
   }
 
   getUseCase(name: string): any {

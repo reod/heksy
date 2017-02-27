@@ -3,7 +3,7 @@ import { Retro } from './../../../domain/retro';
 import { RetroRepository } from './../../../domain/RetroRepository';
 
 export class InMemoryRetroRepository 
-  extends InMemoryRepository<Retro> 
+  extends InMemoryRepository
   implements RetroRepository {
     constructor() {
       super();

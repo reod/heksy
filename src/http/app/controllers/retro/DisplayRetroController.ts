@@ -15,8 +15,8 @@ export class DisplayRetroController extends ApiController implements Responder {
   @Get('/retros/:id')
   async displayRetro(@Param('id') id: string) {
     const displayRetroUseCase = this.getDisplayRetroUseCase();
-    const displayretroCommand = new Command(id);
-    await displayRetroUseCase.execute(displayretroCommand, this);
+    const displayRetroCommand = new Command(id);
+    await displayRetroUseCase.execute(displayRetroCommand, this);
 
     return this.retro;
   }
@@ -26,7 +26,7 @@ export class DisplayRetroController extends ApiController implements Responder {
   }
 
   async retroNotFound() {
-    throw new Error('retro not found.');
+    throw new Error('Not found.');
   }
 
   private getDisplayRetroUseCase(): UseCase {

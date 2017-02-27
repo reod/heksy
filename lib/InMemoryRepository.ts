@@ -1,25 +1,32 @@
-interface Idwise {
-  id?: any;
+interface QueryParam {
+  key: string;
+  value: any;
 }
 
-export class InMemoryRepository<T extends Idwise> {
+export class InMemoryRepository {
 
-  private repo: Array<T> = [];
+  private repo: Array<any> = [];
   
-  async add(item: T): Promise<T> {
-    const id = String(+new Date());
-    const itemWithId = Object.assign({}, item, { id });
-    this.repo.push(itemWithId);
-    
-    return Promise.resolve(itemWithId);
-  }
-
-  async findById(id: string): Promise<T> {
-    const item: T = this.repo.find(item => item.id === id);
+  async add(item: any): Promise<any> {
+    item.id = String(this.repo.length + 1);
+    this.repo.push(item);
     return Promise.resolve(item);
   }
 
-  async getAll(): Promise<Array<T>> {
+  async findById(id: string): Promise<any> {
+    const item = this.repo.find(item => item.id === id);
+    return Promise.resolve(item);
+  }
+
+  async findBy(query: QueryParam): Promise<Array<any>> {
+    const items = await this.repo.filter(item => {
+      return item[query.key] === query.value;
+    });
+
+    return items;
+  }
+
+  async getAll(): Promise<Array<any>> {
     return Promise.resolve(this.repo);
   }
 
@@ -28,7 +35,7 @@ export class InMemoryRepository<T extends Idwise> {
     const { length } = this.repo;
     
     for (let i = 0; i < length; i++) {
-      if (this.repo[i].id === id) {
+      if (this.repo[i].getId() === id) {
         index = i;
         break; 
       }
@@ -46,20 +53,17 @@ export class InMemoryRepository<T extends Idwise> {
     return Promise.resolve(true);
   }
 
-  async edit(item: T): Promise<T> {
+  async edit(item: any): Promise<any> {
     const { id } = item;
     const { length } = this.repo;
     let index = -1;
-
-    console.log(id, item);
     
     for (let i = 0; i < length; i++) {
-      if (this.repo[i].id === id) {
+      if (this.repo[i].getId() === id) {
         index = i;
         break; 
       }
     }
-
 
     if (index === -1) {
       throw new Error(`Item with ${id} not found!`);
@@ -75,4 +79,5 @@ export class InMemoryRepository<T extends Idwise> {
 
     return Promise.resolve(editedItem);
   }
+
 }
