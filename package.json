@@ -14,17 +14,19 @@
   "author": "Remek Ambroziak <remek.ambroziak@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "@types/koa": "^2.0.34",
-    "@types/koa-bodyparser": "^3.0.20",
+    "@types/koa": "^2.0.38",
+    "@types/koa-bodyparser": "^3.0.23",
     "@types/koa-router": "^7.0.21",
-    "@types/mongoose": "^4.7.1",
-    "@types/node": "^6.0.48",
-    "koa": "^2.0.0",
+    "@types/mongoose": "^4.7.6",
+    "@types/node": "^6.0.63",
+    "koa": "^2.0.1",
     "koa-bodyparser": "^3.2.0",
-    "koa-router": "^7.0.1",
-    "mongoose": "^4.7.2",
-    "routing-controllers": "^0.6.9",
-    "typescript": "^2.1.6"
+    "koa-router": "^7.1.0",
+    "mongoose": "^4.8.5",
+    "routing-controllers": "^0.6.10",
+    "ts-node": "^1.7.3",
+    "typescript": "^2.2.1",
+    "typings": "^2.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",

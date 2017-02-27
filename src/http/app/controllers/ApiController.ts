@@ -33,7 +33,7 @@ export class ApiController {
     this.useCases.set('displayRetro', new DisplayRetroUseCase(retroRepo, noteRepo));
   }
 
-  getUseCase(name: string): any {
+  protected getUseCase(name: string): any {
     return this.useCases.get(name);
   } 
 }
