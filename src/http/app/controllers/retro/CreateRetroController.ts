@@ -22,11 +22,11 @@ export class CreateRetroController extends ApiController implements Responder {
     return this.retro;
   }
 
-  retroSuccessfullyCreated(retro: Retro) {
+  async retroSuccessfullyCreated(retro: Retro) {
     this.retro = retro;
   }
 
-  retroNotCreated(errors: Array<ValidationError>) {
+  async retroNotCreated(errors: Array<ValidationError>) {
     const e = <any> new Error('ValidationError');
     e.errors = errors;
 

@@ -5,7 +5,11 @@ interface QueryParam {
 
 export class InMemoryRepository {
 
-  private repo: Array<any> = [];
+  private repo: Array<any>;
+
+  constructor() {
+    this.repo = [];
+  }
   
   async add(item: any): Promise<any> {
     item.id = String(this.repo.length + 1);

@@ -26,6 +26,7 @@ export class DisplayRetroController extends ApiController implements Responder {
   }
 
   async retroNotFound() {
+    this.retro = null;
     throw new Error('Not found.');
   }
 

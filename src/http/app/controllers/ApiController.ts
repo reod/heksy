@@ -8,6 +8,7 @@ import { UseCase as EditNoteUseCase } from './../../../application/use-cases/edi
 import { UseCase as DisplayNoteUseCase } from './../../../application/use-cases/display-note/UseCase';
 
 import { InMemoryRetroRepository } from './../../../modules/retro/infrastructure/persistance/in-memory/InMemoryRetroRepository';
+import { JsonRetroRepository } from './../../../modules/retro/infrastructure/persistance/json/JsonRetroRepository';
 import { UseCase as CreateRetroUseCase } from './../../../application/use-cases/create-retro/UseCase';
 import { UseCase as DisplayRetroUseCase } from './../../../application/use-cases/display-retro/UseCase';
 
@@ -19,9 +20,12 @@ export class ApiController {
   public static inMemoryNoteRepository: InMemoryNoteRepository = new InMemoryNoteRepository();
   public static inMemoryRetroRepository: InMemoryRetroRepository = new InMemoryRetroRepository();
 
+  public static jsonRetroRepository: JsonRetroRepository = new JsonRetroRepository();
+
   constructor() {
     const noteRepo = ApiController.inMemoryNoteRepository;
-    const retroRepo = ApiController.inMemoryRetroRepository;
+    const retroRepo = ApiController.jsonRetroRepository;
+    retroRepo.init();
 
     this.useCases.set('listNotes', new ListNoteUseCase(noteRepo));
     this.useCases.set('addNote', new AddNoteUseCase(noteRepo, retroRepo));

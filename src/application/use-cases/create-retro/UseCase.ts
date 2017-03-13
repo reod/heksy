@@ -17,9 +17,9 @@ export class UseCase {
   async execute(command: Command, responder: Responder) {
     try {
       const retro = RetroFactory.create(command.getRetro());
-      const addedretro = await this.retroRepository.add(retro);
+      const addedRetro = await this.retroRepository.add(retro);
 
-      responder.retroSuccessfullyCreated(addedretro);
+      responder.retroSuccessfullyCreated(addedRetro);
     } catch (e) {
       responder.retroNotCreated(e.getErrors());
     }

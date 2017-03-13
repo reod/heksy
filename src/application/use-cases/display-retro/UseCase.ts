@@ -30,7 +30,6 @@ export class UseCase {
 
       responder.retroSuccessfullyFound(retro);
     } catch (e) {
-      console.log(e)
       responder.retroNotFound();
     }
   }
