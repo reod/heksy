@@ -1,6 +1,7 @@
 import { JsonController, Get } from 'routing-controllers';
 
 import { InMemoryNoteRepository } from './../../../modules/note/infrastructure/persistance/in-memory/InMemoryNoteRepository';
+import { JsonNoteRepository } from './../../../modules/note/infrastructure/persistance/json/JsonNoteRepository';
 import { UseCase as ListNoteUseCase } from './../../../application/use-cases/list-notes/UseCase';
 import { UseCase as AddNoteUseCase } from './../../../application/use-cases/add-note/UseCase';
 import { UseCase as DeleteNoteUseCase } from './../../../application/use-cases/delete-note/UseCase';
@@ -18,12 +19,14 @@ export class ApiController {
 
   private useCases: Map<string, any> = new Map<string, any>();
   public static inMemoryNoteRepository: InMemoryNoteRepository = new InMemoryNoteRepository();
-  public static inMemoryRetroRepository: InMemoryRetroRepository = new InMemoryRetroRepository();
+  public static jsonNoteRepository: JsonNoteRepository = new JsonNoteRepository();
 
+  public static inMemoryRetroRepository: InMemoryRetroRepository = new InMemoryRetroRepository();
   public static jsonRetroRepository: JsonRetroRepository = new JsonRetroRepository();
 
   constructor() {
-    const noteRepo = ApiController.inMemoryNoteRepository;
+    const noteRepo = ApiController.jsonNoteRepository;
+    noteRepo.init();
     const retroRepo = ApiController.jsonRetroRepository;
     retroRepo.init();
 

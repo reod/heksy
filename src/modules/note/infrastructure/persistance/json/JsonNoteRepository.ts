@@ -6,9 +6,9 @@ import { NoteRepository } from './../../../domain/NoteRepository';
 export class JsonNoteRepository 
     extends JsonRepository<Note>
     implements NoteRepository {
-  
+
   constructor() {
-    super('./storage/Note.json', NoteFactory);
+    super('./storage/note.json', NoteFactory);
   }
 
   public findByRetroId(retroId: string) {
