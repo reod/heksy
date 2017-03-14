@@ -24,8 +24,8 @@ export class JsonRepository<T> {
 
   private async saveState() {
     return new Promise<void>((resolve, reject) => {
-      const content = JSON.stringify(this.repo) + '\n';
-      fs.writeFile(this.filePath, content, 'utf8', (err: any) => 
+      const content = JSON.stringify(this.repo);
+      fs.appendFile(this.filePath, content, 'utf8', (err: any) => 
         err ? reject(err) : resolve()
       );
     });
